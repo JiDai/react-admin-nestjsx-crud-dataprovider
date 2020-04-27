@@ -22,7 +22,7 @@ export default (apiUrl, httpClient = fetchUtils.fetchJson) => {
     const flatFilter = fetchUtils.flattenObject(paramsFilter);
     const filter = Object.keys(flatFilter).map(key => {
       const splitKey = key.split('||');
-      let operator = splitKey[1] ? splitKey[1] : 'cont';
+      let operator = splitKey[1] ? splitKey[1] : '$contL';
       let field = splitKey[0];
 
       if (field.indexOf('_') === 0 && field.indexOf('.') > -1) {
