@@ -2,5 +2,4 @@
 *.lock
 *.env
 .idea
-/dist
 /node_modules

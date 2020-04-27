@@ -7,14 +7,13 @@
     "rollup": "rollup",
     "watch": "rollup -cw",
     "build": "rollup -c",
-    "postbuild": "node lib/copy_package && node lib/copy_readme",
     "patch": "npm version patch -m \"[skip travis] Release version: %s\"",
     "prerelease": "npm whoami && npm run patch && npm run build",
     "release": "npm publish dist --access public"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/FusionWorks/react-admin-nestjsx-crud-dataprovider.git"
+    "url": "git+https://github.com/JiDai/react-admin-nestjsx-crud-dataprovider.git"
   },
   "keywords": [
     "ra",
@@ -34,9 +33,9 @@
     "rollup-plugin-sourcemaps": "^0.4.2"
   },
   "bugs": {
-    "url": "https://github.com/FusionWorks/react-admin-nestjsx-crud-dataprovider/issues"
+    "url": "https://github.com/JiDai/react-admin-nestjsx-crud-dataprovider/issues"
   },
-  "homepage": "https://github.com/FusionWorks/react-admin-nestjsx-crud-dataprovider#readme",
+  "homepage": "https://github.com/JiDai/react-admin-nestjsx-crud-dataprovider#readme",
   "dependencies": {
     "@nestjsx/crud-request": "^4.1.0"
   },
