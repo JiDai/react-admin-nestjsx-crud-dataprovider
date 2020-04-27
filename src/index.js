@@ -28,10 +28,14 @@ export default (apiUrl, httpClient = fetchUtils.fetchJson) => {
       if (field.indexOf('_') === 0 && field.indexOf('.') > -1) {
         field = field.split(/\.(.+)/)[1];
       }
-      // Assume `id` property require always an equality operator
+      // Assume `id` property on reference input require always an equality operator
       // LIKE operator is not working on uuid field
       if(field.endsWith('.id')) {
-        operator = '$eq'
+        operator = '$eq';
+      }
+      // Assume boolean field are prefixed with `is`
+      else if(field.startsWith('is') !== -1) {
+        operator = '$eq';
       }
       return { field, operator, value: flatFilter[key] };
     });
