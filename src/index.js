@@ -22,13 +22,18 @@ export default (apiUrl, httpClient = fetchUtils.fetchJson) => {
     const flatFilter = fetchUtils.flattenObject(paramsFilter);
     const filter = Object.keys(flatFilter).map(key => {
       const splitKey = key.split('||');
-      const ops = splitKey[1] ? splitKey[1] : 'cont';
+      let operator = splitKey[1] ? splitKey[1] : 'cont';
       let field = splitKey[0];
 
       if (field.indexOf('_') === 0 && field.indexOf('.') > -1) {
         field = field.split(/\.(.+)/)[1];
       }
-      return { field, operator: ops, value: flatFilter[key] };
+      // Assume `id` property require always an equality operator
+      // LIKE operator is not working on uuid field
+      if(field.endsWith('.id')) {
+        operator = '$eq'
+      }
+      return { field, operator, value: flatFilter[key] };
     });
     return filter;
   };
